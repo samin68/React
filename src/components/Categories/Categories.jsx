@@ -42,34 +42,6 @@ export default function Categoryies(props) {
 
   let [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState(0);
-  const [updateList, setUpdateList] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
-  const [newCategoryName, setNewCategoryName] = React.useState('');
-  const [openEdit, setOpenEdit] = React.useState(false);
-
-
-  const toggleUpdateList = () => setUpdateList(current => !current);
-
-
-  
-  const submit = () => {
-
-    setOpen(false);
-    axios.post('/api/categories', {
-      name: newCategoryName,
-    })
-      .then(function (response) {
-        setNewCategoryName('');
-        toggleUpdateList();
-      })
-      .catch(function (error) {
-        console.info(error);
-      });
-
-
-  }
-
-
 
 
   useEffect(() => {
@@ -79,7 +51,7 @@ export default function Categoryies(props) {
         setCategories(json)
       })
       .catch((error)=>console.log(error))
-  }, [updateList])
+  }, [])
 
 
  const {setCheckedCategory} = props;
@@ -95,21 +67,13 @@ export default function Categoryies(props) {
  }
 
    
-
-
  const deleteFilter= () =>{
     setChecked(0);
     // setCheckedCategory(0);
  }
 
 
- 
  const classes = useStyles();
-
-
-
-
-
 
 
   return (
